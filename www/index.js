@@ -1,5 +1,5 @@
 import { Universe, greet, Cell} from "wasm-game-of-life";
-import { memory } from "wasm-game-of-life/rusty_wasm_bg";
+import { memory } from "wasm-game-of-life/rusty_wasm_bg.wasm";
 
 const CELL_SIZE = 5; // px
 const GRID_COLOR = "#CCCCCC";

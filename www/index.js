@@ -88,6 +88,10 @@ const drawCells = () => {
     ctx.stroke();
 };
 
+const startButton = document.getElementById("start-button");
+const stopButton = document.getElementById("stop-button");
+
+startButton.onclick = start;
+stopButton.onclick = stop;
 
 greet("test");
-start();

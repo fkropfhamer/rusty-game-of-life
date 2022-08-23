@@ -1,6 +1,7 @@
 mod utils;
 
 use wasm_bindgen::prelude::*;
+use rand::Rng;
 
 
 
@@ -94,11 +95,20 @@ impl Universe {
         self.cells = next;
     }
 
+    pub fn set_random(&mut self) {
+        let mut rng = rand::thread_rng();
+        self.cells = (0..self.width * self.height)
+            .map(|_| {
+                let r = rng.gen_range(0..10);
+                if r < 7 {
+                    Cell::Dead
+                } else {
+                    Cell::Alive
+                }
+            }).collect();
+    }
 
     pub fn new(width: u32, height: u32) -> Universe {
-        //let width = 64;
-        //let height = 64;
-
         let cells = (0..width * height)
             .map(|i| {
                 if i % 2 == 0 || i % 7 == 0 {

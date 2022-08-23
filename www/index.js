@@ -18,11 +18,15 @@ const ctx = canvas.getContext("2d");
 
 let isStopped = false;
 
+const draw = () => {
+    drawGrid();
+    drawCells();
+}
+
 const renderLoop = () => {
     universe.tick();
 
-    drawGrid();
-    drawCells();
+    draw();
 
     if (isStopped) {
         return;    
@@ -37,6 +41,12 @@ const start = () => {
 
 const stop = () => {
     isStopped = true;
+}
+
+const random = () => {
+    universe.set_random();
+
+    draw();
 }
 
 const drawGrid = () => {
@@ -90,8 +100,12 @@ const drawCells = () => {
 
 const startButton = document.getElementById("start-button");
 const stopButton = document.getElementById("stop-button");
+const randomButton = document.getElementById("random-button");
 
 startButton.onclick = start;
 stopButton.onclick = stop;
+randomButton.onclick = random;
 
 greet("test");
+
+draw();
